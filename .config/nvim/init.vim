@@ -1,0 +1,1 @@
+/Users/Alan/.config/nvim/init.vim
