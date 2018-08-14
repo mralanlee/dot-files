@@ -1,10 +1,13 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$PATH:$HOME/go/bin
+export PATH=~/.local/bin:$PATH
 # VAULT
 
+USER_BASE_PATH=$(python3 -m site --user-base)
 export PATH=$PATH:$USER_BASE_PATH/bin
 export PATH=$PATH:/Users/ally/Documents
+export VAULT_ADDR=https://mradvault.cloud.pge.com
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/ally/.oh-my-zsh
@@ -13,7 +16,7 @@ export GOPATH=$HOME/go
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="spaceship"
+ZSH_THEME="hyperzsh"
 
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
@@ -44,7 +47,7 @@ export ANSIBLE_VAULT_PASSWORD_FILE=~/.vault_pass.txt
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
