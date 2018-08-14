@@ -7,7 +7,6 @@ export PATH=~/.local/bin:$PATH
 USER_BASE_PATH=$(python3 -m site --user-base)
 export PATH=$PATH:$USER_BASE_PATH/bin
 export PATH=$PATH:/Users/ally/Documents
-export VAULT_ADDR=https://mradvault.cloud.pge.com
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/ally/.oh-my-zsh
