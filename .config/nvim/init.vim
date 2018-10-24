@@ -1,11 +1,14 @@
 if &compatible
  set nocompatible
 endif
+" Add the dein installation directory into runtimepath
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
-set runtimepath^=$HOME/.config/nvim/repos/github.com/Shougo/dein.vim
-set guifont="Fira Code"
-if dein#load_state(expand('$HOME/.config/nvim'))
- call dein#begin(expand('$HOME/.config/nvim'))
+if dein#load_state('~/.cache/dein')
+ call dein#begin('~/.cache/dein')
+
+ call dein#add('~/.cache/dein')
+ call dein#add('Shougo/deoplete.nvim')
  call dein#add('Shougo/dein.vim')
  call dein#add('Shougo/denite.nvim')
  call dein#add('Shougo/neosnippet-snippets')
@@ -22,31 +25,38 @@ if dein#load_state(expand('$HOME/.config/nvim'))
  call dein#add('othree/es.next.syntax.vim', { 'on_ft': 'javascript' })
  call dein#add('othree/javascript-libraries-syntax.vim', { 'on_ft': ['javascript', 'javascript.jsx'] })
  call dein#add('prettier/vim-prettier')
+ call dein#add('pangloss/vim-javascript')
  call dein#add('scrooloose/nerdcommenter')
  call dein#add('tpope/vim-fugitive')
  call dein#add('~/.cache/dein')
- call dein#add('mhartington/oceanic-next')
  call dein#add('cohama/lexima.vim')
  call dein#add('tpope/vim-surround')
  call dein#add('tpope/vim-repeat')
+ call dein#add('hashivim/vim-terraform')
+ call dein#add('ekalinin/Dockerfile.vim')
  call dein#add('Yggdroot/indentLine')
  call dein#add('airblade/vim-gitgutter')
  call dein#add('ntpeters/vim-better-whitespace')
+ call dein#add('marcweber/vim-addon-mw-utils')
+ call dein#add('garbas/vim-snipmate')
+ call dein#add('tomtom/tlib_vim')
+ call dein#add('phanviet/vim-monokai-pro')
  if !has('nvim')
    call dein#add('roxma/nvim-yarp')
    call dein#add('roxma/vim-hug-neovim-rpc')
  endif
+
  call dein#end()
  call dein#save_state()
 endif
 
 set background=dark
-syntax on
-colorscheme OceanicNext
-let g:oceanic_next_terminal_bold=1
-let g:oceanic_next_terminal_italic=1
+colorscheme monokai_pro
+filetype plugin indent on
+syntax enable
 highlight Pmenu guibg=#161616
 
+set termguicolors
 set encoding=utf8
 set hidden
 set nomodeline
@@ -74,10 +84,10 @@ set splitright
 set display+=lastline
 set updatetime=250
 set timeoutlen=500
-set shiftwidth=4
+set shiftwidth=2
 set expandtab
 set tabstop=2
-set softtabstop=2
+"set softtabstop=2
 set conceallevel=1
 set undolevels=100
 set nowrap
@@ -104,6 +114,8 @@ let g:rustfmt_autosave=1
 let g:sneak#s_next=1
 let g:used_javascript_libs='react'
 let g:vim_jsx_pretty_colorful_config=1
+let g:terraform_align=1
+let g:javascript_plugin_jsdoc=1
 
 " FUNCTIONS
 function! s:fzf_statusline()
@@ -176,4 +188,3 @@ nnoremap <C-l> <C-w>l
 nnoremap _ <C-w>_
 
 filetype plugin indent on
-syntax enable
