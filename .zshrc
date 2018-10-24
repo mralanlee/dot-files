@@ -1,90 +1,55 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$PATH:$HOME/go/bin
-export PATH=~/.local/bin:$PATH
-# VAULT
 
-USER_BASE_PATH=$(python3 -m site --user-base)
-export PATH=$PATH:$USER_BASE_PATH/bin
-export PATH=$PATH:/Users/ally/Documents
+# Ansible Vault
+export ANSIBLE_VAULT_PASSWORD_FILE=$HOME/.ansible_vault.txt
 
-# Path to your oh-my-zsh installation.
-export ZSH=/Users/ally/.oh-my-zsh
-
+# PATHS
 export GOPATH=$HOME/go
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+export PATH=$PATH:$HOME/go/bin
+export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$PATH:$HOME/.protoc/bin
+export PATH=$HOME/bin:$PATH
+export VIMPATH=$HOME/.config/nvim/init.vim
+export ZSHRC=$HOME/.zshrc
+## Language Specific
+# GO
+export GO111MODULE=auto
+export GOPROXY="direct"
+# Path to your oh-my-zsh installation.
+export ZSH="/Users/alalee/.oh-my-zsh"
+
 ZSH_THEME="hyperzsh"
 
-fpath=(~/.zsh/completion $fpath)
-autoload -Uz compinit && compinit -i
-# Set list of themes to load
-# Setting this variable when ZSH_THEME=random
-# cause zsh load theme from this variable instead of
-# looking in ~/.oh-my-zsh/themes/
-# An empty array have no effect
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# fasd
+eval "$(fasd --init auto)"
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+# ALIASES
+alias pro='cd ~/projects'
+alias gco='git checkout'
+alias gc='git commit'
+alias ga='git add'
+alias gaa='git add .'
+alias gb='git branch'
+alias gst='git status'
+alias vimc='nvim $VIMPATH'
+alias zshc='nvim $ZSHRC'
+alias sz='source $ZSHRC'
+alias sv='source $VIMPATH'
+alias cat='bat'
+alias j='fasd_cd -d'
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git,
   docker,
-  ansible,
-  node,
-  osx,
-  os,
-  zsh-syntax-highlight,
-  zsh-autosuggestions
+  zsh-autosuggestions,
+  terraform,
+  kubectl,
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source <(kubectl completion zsh)
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -95,36 +60,30 @@ source <(kubectl completion zsh)
 #   export EDITOR='mvim'
 # fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# Kubernetes
+if [ $commands[kubectl] ]; then
+  source <(kubectl completion zsh)
+fi
 
+# DOCKER
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit -i
+
+# FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
-export PATH=$PATH:$HOME/bin
-export PATH=$PATH:$HOME/bin
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/ally/.nvm/versions/node/v8.11.2/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/ally/.nvm/versions/node/v8.11.2/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/ally/.nvm/versions/node/v8.11.2/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/ally/.nvm/versions/node/v8.11.2/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+# Syntax Highlighting
+source /Users/alalee/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# added by travis gem
+[ -f /Users/alalee/.travis/travis.sh ] && source /Users/alalee/.travis/travis.sh
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/Cellar/terraform/0.11.7/bin/terraform terraform
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+complete -o nospace -C /usr/local/bin/vault vault
