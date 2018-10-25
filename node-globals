@@ -1,0 +1,14 @@
+nfo "avn@0.2.3" has binaries:
+   - avn
+info "depcheck@0.6.11" has binaries:
+   - depcheck
+info "eslint@5.6.1" has binaries:
+   - eslint
+info "grunt@1.0.3" has binaries:
+   - grunt
+info "localtunnel@1.9.1" has binaries:
+   - lt
+info "ndb@1.0.25" has binaries:
+   - ndb
+info "nodemon@1.18.4" has binaries:
+   - nodemon
