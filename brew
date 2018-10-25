@@ -1,0 +1,17 @@
+ansible			jemalloc		msgpack			terragrunt
+awscli			jpeg			ncurses			tflint
+bat			jq			neovim			tmux
+dep			kubernetes-cli		node			tree
+fasd			libevent		nvm			unar
+fontconfig		libidn2			oniguruma		unibilium
+freetype		libpng			openssl			webp
+fzf			libssh2			pcre2			wget
+gd			libtermkey		pkg-config		xz
+gdbm			libtiff			python			yarn
+gettext			libtool			python@2		zsh
+go			libunistring		readline		zsh-autosuggestions
+graphviz		libuv			redis			zsh-completions
+heroku			libvterm		ripgrep			zsh-syntax-highlighting
+heroku-node		libyaml			rust
+hub			lolcat			sqlite
+icu4c			luajit			terraform_landscape
