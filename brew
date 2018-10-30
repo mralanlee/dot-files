@@ -1,17 +1,13 @@
-ansible			jemalloc		msgpack			terragrunt
-awscli			jpeg			ncurses			tflint
-bat			jq			neovim			tmux
-dep			kubernetes-cli		node			tree
-fasd			libevent		nvm			unar
-fontconfig		libidn2			oniguruma		unibilium
-freetype		libpng			openssl			webp
-fzf			libssh2			pcre2			wget
-gd			libtermkey		pkg-config		xz
-gdbm			libtiff			python			yarn
-gettext			libtool			python@2		zsh
-go			libunistring		readline		zsh-autosuggestions
-graphviz		libuv			redis			zsh-completions
-heroku			libvterm		ripgrep			zsh-syntax-highlighting
-heroku-node		libyaml			rust
-hub			lolcat			sqlite
-icu4c			luajit			terraform_landscape
+ansible			gdbm			jpeg			libtool			neovim			readline		tree			zsh-completions
+awscli			gettext			jq			libunistring		node			redis			unar			zsh-syntax-highlighting
+bat			go			kubernetes-cli		libuv			nvm			ripgrep			unibilium
+dep			graphviz		libevent		libvterm		oniguruma		rust			webp
+fasd			heroku			libidn2			libyaml			openssl			sqlite			wget
+fontconfig		heroku-node		libpng			lolcat			pcre2			terraform_landscape	xz
+freetype		hub			libssh2			luajit			pkg-config		terragrunt		yarn
+fzf			icu4c			libtermkey		msgpack			python			tflint			zsh
+gd			jemalloc		libtiff			ncurses			python@2		tmux			zsh-autosuggestions
+
+# cask
+
+font-fira-code                                                       java                                                                 minikube
