@@ -12,6 +12,7 @@ export PATH=$PATH:$HOME/.protoc/bin
 export PATH=$HOME/bin:$PATH
 export VIMPATH=$HOME/.config/nvim/init.vim
 export ZSHRC=$HOME/.zshrc
+export ALARC=$HOME/.config/alacritty/alacritty.yml
 ## Language Specific
 # GO
 export GO111MODULE=auto
@@ -34,10 +35,22 @@ alias gb='git branch'
 alias gst='git status'
 alias vimc='nvim $VIMPATH'
 alias zshc='nvim $ZSHRC'
+alias alac='nvim $ALARC'
 alias sz='source $ZSHRC'
 alias sv='source $VIMPATH'
 alias cat='bat'
+alias ls='exa'
 alias j='fasd_cd -d'
+
+gpu() {
+  BRANCH=$(git branch | grep \* | cut -d ' ' -f2)
+  git push --set-upstream origin $BRANCH
+}
+
+pk() {
+  PORT=$1
+  lsof -ti:$PORT | xargs kill
+}
 
 plugins=(
   git,
@@ -87,3 +100,8 @@ source /Users/alalee/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/vault vault
+
+complete -o nospace -C /Users/alalee/go/bin/terraform terraform
+
+export PATH=$HOME/.fnm:$PATH
+eval `fnm env`
